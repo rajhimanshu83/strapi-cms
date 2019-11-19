@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/smartphones",
+      "handler": "Smartphones.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/smartphones/count",
+      "handler": "Smartphones.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/smartphones/:_id",
+      "handler": "Smartphones.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/smartphones",
+      "handler": "Smartphones.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/smartphones/:_id",
+      "handler": "Smartphones.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/smartphones/:_id",
+      "handler": "Smartphones.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

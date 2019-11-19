@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "articles",
   "info": {
     "name": "articles",
     "description": "blog"
@@ -22,6 +22,14 @@
       "model": "file",
       "via": "related",
       "plugin": "upload"
+    },
+    "tags": {
+      "collection": "articles",
+      "via": "articles"
+    },
+    "articles": {
+      "model": "articles",
+      "via": "tags"
     }
   }
 }

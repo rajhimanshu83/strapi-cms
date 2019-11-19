@@ -7,6 +7,8 @@ type Articles {
   title: String!
   content: String!
   image: UploadFile
+  articles: Articles
+  tags(sort: String, limit: Int, start: Int, where: JSON): [Articles]
 }
 
 type ArticlesAggregator {
@@ -21,6 +23,11 @@ type ArticlesConnection {
 }
 
 type ArticlesConnection_id {
+  key: ID
+  connection: ArticlesConnection
+}
+
+type ArticlesConnectionArticles {
   key: ID
   connection: ArticlesConnection
 }
@@ -63,12 +70,15 @@ type ArticlesGroupBy {
   title: [ArticlesConnectionTitle]
   content: [ArticlesConnectionContent]
   image: [ArticlesConnectionImage]
+  articles: [ArticlesConnectionArticles]
 }
 
 input ArticlesInput {
   title: String!
   content: String!
   image: ID
+  tags: [ID]
+  articles: ID
 }
 
 input createArticlesInput {
@@ -85,6 +95,14 @@ input createRoleInput {
 
 type createRolePayload {
   role: UsersPermissionsRole
+}
+
+input createSmartphonesInput {
+  data: SmartphonesInput
+}
+
+type createSmartphonesPayload {
+  smartphone: Smartphones
 }
 
 input createUserInput {
@@ -116,6 +134,14 @@ type deleteRolePayload {
   role: UsersPermissionsRole
 }
 
+input deleteSmartphonesInput {
+  where: InputID
+}
+
+type deleteSmartphonesPayload {
+  smartphone: Smartphones
+}
+
 input deleteUserInput {
   where: InputID
 }
@@ -128,6 +154,8 @@ input editArticlesInput {
   title: String
   content: String
   image: ID
+  tags: [ID]
+  articles: ID
 }
 
 input editFileInput {
@@ -149,6 +177,10 @@ input editRoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input editSmartphonesInput {
+  name: String
 }
 
 input editUserInput {
@@ -187,12 +219,15 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionArticles | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createArticles(input: createArticlesInput): createArticlesPayload
   updateArticles(input: updateArticlesInput): updateArticlesPayload
   deleteArticles(input: deleteArticlesInput): deleteArticlesPayload
+  createSmartphones(input: createSmartphonesInput): createSmartphonesPayload
+  updateSmartphones(input: updateSmartphonesInput): updateSmartphonesPayload
+  deleteSmartphones(input: deleteSmartphonesInput): deleteSmartphonesPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -218,6 +253,9 @@ type Query {
   article(id: ID!): Articles
   articles(sort: String, limit: Int, start: Int, where: JSON): [Articles]
   articlesConnection(sort: String, limit: Int, start: Int, where: JSON): ArticlesConnection
+  smartphone(id: ID!): Smartphones
+  smartphones(sort: String, limit: Int, start: Int, where: JSON): [Smartphones]
+  smartphonesConnection(sort: String, limit: Int, start: Int, where: JSON): SmartphonesConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -241,6 +279,63 @@ input RoleInput {
   users: [ID]
 }
 
+"""smartphones database"""
+type Smartphones {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+}
+
+type SmartphonesAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type SmartphonesConnection {
+  values: [Smartphones]
+  groupBy: SmartphonesGroupBy
+  aggregate: SmartphonesAggregator
+}
+
+type SmartphonesConnection_id {
+  key: ID
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionCreatedAt {
+  key: DateTime
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionId {
+  key: ID
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionName {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionUpdatedAt {
+  key: DateTime
+  connection: SmartphonesConnection
+}
+
+type SmartphonesGroupBy {
+  _id: [SmartphonesConnection_id]
+  id: [SmartphonesConnectionId]
+  createdAt: [SmartphonesConnectionCreatedAt]
+  updatedAt: [SmartphonesConnectionUpdatedAt]
+  name: [SmartphonesConnectionName]
+}
+
+input SmartphonesInput {
+  name: String
+}
+
 input updateArticlesInput {
   where: InputID
   data: editArticlesInput
@@ -257,6 +352,15 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateSmartphonesInput {
+  where: InputID
+  data: editSmartphonesInput
+}
+
+type updateSmartphonesPayload {
+  smartphone: Smartphones
 }
 
 input updateUserInput {
