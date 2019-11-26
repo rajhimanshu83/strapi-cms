@@ -23,13 +23,11 @@
       "via": "related",
       "plugin": "upload"
     },
-    "tags": {
-      "collection": "articles",
-      "via": "articles"
+    "category": {
+      "type": "string"
     },
-    "articles": {
-      "model": "articles",
-      "via": "tags"
+    "tag": {
+      "type": "string"
     }
   }
 }
