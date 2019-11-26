@@ -2,7 +2,7 @@
   "host": "localhost",
   "port": 1337,
   "proxy": {
-    "enabled": false
+    "enabled": true
   },
   "autoReload": {
     "enabled": true
