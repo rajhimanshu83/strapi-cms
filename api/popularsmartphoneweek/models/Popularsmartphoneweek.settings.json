@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "popularsmartphoneweek",
+  "info": {
+    "name": "popularsmartphoneweek",
+    "description": "popular this week"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "smartphones": {
+      "collection": "smartphones",
+      "via": "popularsmartphoneweek"
+    },
+    "week": {
+      "type": "date"
+    }
+  }
+}

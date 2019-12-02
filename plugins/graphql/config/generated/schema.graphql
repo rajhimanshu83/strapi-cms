@@ -95,6 +95,14 @@ type createArticlesPayload {
   article: Articles
 }
 
+input createPopularsmartphoneweekInput {
+  data: PopularsmartphoneweekInput
+}
+
+type createPopularsmartphoneweekPayload {
+  popularsmartphoneweek: Popularsmartphoneweek
+}
+
 input createRoleInput {
   data: RoleInput
 }
@@ -130,6 +138,14 @@ input deleteArticlesInput {
 
 type deleteArticlesPayload {
   article: Articles
+}
+
+input deletePopularsmartphoneweekInput {
+  where: InputID
+}
+
+type deletePopularsmartphoneweekPayload {
+  popularsmartphoneweek: Popularsmartphoneweek
 }
 
 input deleteRoleInput {
@@ -177,6 +193,11 @@ input editFileInput {
   related: [ID]
 }
 
+input editPopularsmartphoneweekInput {
+  smartphones: [ID]
+  week: DateTime
+}
+
 input editRoleInput {
   name: String
   description: String
@@ -187,6 +208,43 @@ input editRoleInput {
 
 input editSmartphonesInput {
   name: String
+  popularsmartphoneweek: ID
+  speed: String
+  announced: String
+  availability: String
+  dimensions: String
+  weight: String
+  sim: String
+  formfactor: String
+  size: String
+  resolution: String
+  os: String
+  chipset: String
+  cpu: String
+  gpu: String
+  cardslot: String
+  internal: String
+  camera: String
+  loudspeaker: String
+  headjack: String
+  launchprice: String
+  wlan: String
+  bluetooth: String
+  nfc: String
+  gps: String
+  radio: String
+  usb: String
+  sensors: String
+  battery: String
+  colors: String
+  models: String
+  sar: String
+  currentprice: String
+  performance: String
+  display: String
+  batterylife: String
+  network: String
+  images: [ID]
 }
 
 input editUserInput {
@@ -225,12 +283,15 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionCategory | ArticlesConnectionTag | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionCategory | ArticlesConnectionTag | Popularsmartphoneweek | createPopularsmartphoneweekPayload | updatePopularsmartphoneweekPayload | deletePopularsmartphoneweekPayload | PopularsmartphoneweekConnection | PopularsmartphoneweekAggregator | PopularsmartphoneweekGroupBy | PopularsmartphoneweekConnection_id | PopularsmartphoneweekConnectionId | PopularsmartphoneweekConnectionCreatedAt | PopularsmartphoneweekConnectionUpdatedAt | PopularsmartphoneweekConnectionWeek | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | SmartphonesConnectionPopularsmartphoneweek | SmartphonesConnectionSpeed | SmartphonesConnectionAnnounced | SmartphonesConnectionAvailability | SmartphonesConnectionDimensions | SmartphonesConnectionWeight | SmartphonesConnectionSim | SmartphonesConnectionFormfactor | SmartphonesConnectionSize | SmartphonesConnectionResolution | SmartphonesConnectionOs | SmartphonesConnectionChipset | SmartphonesConnectionCpu | SmartphonesConnectionGpu | SmartphonesConnectionCardslot | SmartphonesConnectionInternal | SmartphonesConnectionCamera | SmartphonesConnectionLoudspeaker | SmartphonesConnectionHeadjack | SmartphonesConnectionLaunchprice | SmartphonesConnectionWlan | SmartphonesConnectionBluetooth | SmartphonesConnectionNfc | SmartphonesConnectionGps | SmartphonesConnectionRadio | SmartphonesConnectionUsb | SmartphonesConnectionSensors | SmartphonesConnectionBattery | SmartphonesConnectionColors | SmartphonesConnectionModels | SmartphonesConnectionSar | SmartphonesConnectionCurrentprice | SmartphonesConnectionPerformance | SmartphonesConnectionDisplay | SmartphonesConnectionBatterylife | SmartphonesConnectionNetwork | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createArticles(input: createArticlesInput): createArticlesPayload
   updateArticles(input: updateArticlesInput): updateArticlesPayload
   deleteArticles(input: deleteArticlesInput): deleteArticlesPayload
+  createPopularsmartphoneweek(input: createPopularsmartphoneweekInput): createPopularsmartphoneweekPayload
+  updatePopularsmartphoneweek(input: updatePopularsmartphoneweekInput): updatePopularsmartphoneweekPayload
+  deletePopularsmartphoneweek(input: deletePopularsmartphoneweekInput): deletePopularsmartphoneweekPayload
   createSmartphones(input: createSmartphonesInput): createSmartphonesPayload
   updateSmartphones(input: updateSmartphonesInput): updateSmartphonesPayload
   deleteSmartphones(input: deleteSmartphonesInput): deleteSmartphonesPayload
@@ -255,10 +316,72 @@ type Mutation {
   upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
 }
 
+"""popular this week"""
+type Popularsmartphoneweek {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  week: DateTime
+  smartphones(sort: String, limit: Int, start: Int, where: JSON): [Smartphones]
+}
+
+type PopularsmartphoneweekAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PopularsmartphoneweekConnection {
+  values: [Popularsmartphoneweek]
+  groupBy: PopularsmartphoneweekGroupBy
+  aggregate: PopularsmartphoneweekAggregator
+}
+
+type PopularsmartphoneweekConnection_id {
+  key: ID
+  connection: PopularsmartphoneweekConnection
+}
+
+type PopularsmartphoneweekConnectionCreatedAt {
+  key: DateTime
+  connection: PopularsmartphoneweekConnection
+}
+
+type PopularsmartphoneweekConnectionId {
+  key: ID
+  connection: PopularsmartphoneweekConnection
+}
+
+type PopularsmartphoneweekConnectionUpdatedAt {
+  key: DateTime
+  connection: PopularsmartphoneweekConnection
+}
+
+type PopularsmartphoneweekConnectionWeek {
+  key: DateTime
+  connection: PopularsmartphoneweekConnection
+}
+
+type PopularsmartphoneweekGroupBy {
+  _id: [PopularsmartphoneweekConnection_id]
+  id: [PopularsmartphoneweekConnectionId]
+  createdAt: [PopularsmartphoneweekConnectionCreatedAt]
+  updatedAt: [PopularsmartphoneweekConnectionUpdatedAt]
+  week: [PopularsmartphoneweekConnectionWeek]
+}
+
+input PopularsmartphoneweekInput {
+  smartphones: [ID]
+  week: DateTime
+}
+
 type Query {
   article(id: ID!): Articles
   articles(sort: String, limit: Int, start: Int, where: JSON): [Articles]
   articlesConnection(sort: String, limit: Int, start: Int, where: JSON): ArticlesConnection
+  popularsmartphoneweek(id: ID!): Popularsmartphoneweek
+  popularsmartphoneweeks(sort: String, limit: Int, start: Int, where: JSON): [Popularsmartphoneweek]
+  popularsmartphoneweeksConnection(sort: String, limit: Int, start: Int, where: JSON): PopularsmartphoneweekConnection
   smartphone(id: ID!): Smartphones
   smartphones(sort: String, limit: Int, start: Int, where: JSON): [Smartphones]
   smartphonesConnection(sort: String, limit: Int, start: Int, where: JSON): SmartphonesConnection
@@ -292,6 +415,43 @@ type Smartphones {
   createdAt: DateTime!
   updatedAt: DateTime!
   name: String
+  popularsmartphoneweek: Popularsmartphoneweek
+  speed: String
+  announced: String
+  availability: String
+  dimensions: String
+  weight: String
+  sim: String
+  formfactor: String
+  size: String
+  resolution: String
+  os: String
+  chipset: String
+  cpu: String
+  gpu: String
+  cardslot: String
+  internal: String
+  camera: String
+  loudspeaker: String
+  headjack: String
+  launchprice: String
+  wlan: String
+  bluetooth: String
+  nfc: String
+  gps: String
+  radio: String
+  usb: String
+  sensors: String
+  battery: String
+  colors: String
+  models: String
+  sar: String
+  currentprice: String
+  performance: String
+  display: String
+  batterylife: String
+  network: String
+  images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
 type SmartphonesAggregator {
@@ -310,8 +470,93 @@ type SmartphonesConnection_id {
   connection: SmartphonesConnection
 }
 
+type SmartphonesConnectionAnnounced {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionAvailability {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionBattery {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionBatterylife {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionBluetooth {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionCamera {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionCardslot {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionChipset {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionColors {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionCpu {
+  key: String
+  connection: SmartphonesConnection
+}
+
 type SmartphonesConnectionCreatedAt {
   key: DateTime
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionCurrentprice {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionDimensions {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionDisplay {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionFormfactor {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionGps {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionGpu {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionHeadjack {
+  key: String
   connection: SmartphonesConnection
 }
 
@@ -320,7 +565,87 @@ type SmartphonesConnectionId {
   connection: SmartphonesConnection
 }
 
+type SmartphonesConnectionInternal {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionLaunchprice {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionLoudspeaker {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionModels {
+  key: String
+  connection: SmartphonesConnection
+}
+
 type SmartphonesConnectionName {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionNetwork {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionNfc {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionOs {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionPerformance {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionPopularsmartphoneweek {
+  key: ID
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionRadio {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionResolution {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionSar {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionSensors {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionSim {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionSize {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionSpeed {
   key: String
   connection: SmartphonesConnection
 }
@@ -330,16 +655,104 @@ type SmartphonesConnectionUpdatedAt {
   connection: SmartphonesConnection
 }
 
+type SmartphonesConnectionUsb {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionWeight {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionWlan {
+  key: String
+  connection: SmartphonesConnection
+}
+
 type SmartphonesGroupBy {
   _id: [SmartphonesConnection_id]
   id: [SmartphonesConnectionId]
   createdAt: [SmartphonesConnectionCreatedAt]
   updatedAt: [SmartphonesConnectionUpdatedAt]
   name: [SmartphonesConnectionName]
+  popularsmartphoneweek: [SmartphonesConnectionPopularsmartphoneweek]
+  speed: [SmartphonesConnectionSpeed]
+  announced: [SmartphonesConnectionAnnounced]
+  availability: [SmartphonesConnectionAvailability]
+  dimensions: [SmartphonesConnectionDimensions]
+  weight: [SmartphonesConnectionWeight]
+  sim: [SmartphonesConnectionSim]
+  formfactor: [SmartphonesConnectionFormfactor]
+  size: [SmartphonesConnectionSize]
+  resolution: [SmartphonesConnectionResolution]
+  os: [SmartphonesConnectionOs]
+  chipset: [SmartphonesConnectionChipset]
+  cpu: [SmartphonesConnectionCpu]
+  gpu: [SmartphonesConnectionGpu]
+  cardslot: [SmartphonesConnectionCardslot]
+  internal: [SmartphonesConnectionInternal]
+  camera: [SmartphonesConnectionCamera]
+  loudspeaker: [SmartphonesConnectionLoudspeaker]
+  headjack: [SmartphonesConnectionHeadjack]
+  launchprice: [SmartphonesConnectionLaunchprice]
+  wlan: [SmartphonesConnectionWlan]
+  bluetooth: [SmartphonesConnectionBluetooth]
+  nfc: [SmartphonesConnectionNfc]
+  gps: [SmartphonesConnectionGps]
+  radio: [SmartphonesConnectionRadio]
+  usb: [SmartphonesConnectionUsb]
+  sensors: [SmartphonesConnectionSensors]
+  battery: [SmartphonesConnectionBattery]
+  colors: [SmartphonesConnectionColors]
+  models: [SmartphonesConnectionModels]
+  sar: [SmartphonesConnectionSar]
+  currentprice: [SmartphonesConnectionCurrentprice]
+  performance: [SmartphonesConnectionPerformance]
+  display: [SmartphonesConnectionDisplay]
+  batterylife: [SmartphonesConnectionBatterylife]
+  network: [SmartphonesConnectionNetwork]
 }
 
 input SmartphonesInput {
   name: String
+  popularsmartphoneweek: ID
+  speed: String
+  announced: String
+  availability: String
+  dimensions: String
+  weight: String
+  sim: String
+  formfactor: String
+  size: String
+  resolution: String
+  os: String
+  chipset: String
+  cpu: String
+  gpu: String
+  cardslot: String
+  internal: String
+  camera: String
+  loudspeaker: String
+  headjack: String
+  launchprice: String
+  wlan: String
+  bluetooth: String
+  nfc: String
+  gps: String
+  radio: String
+  usb: String
+  sensors: String
+  battery: String
+  colors: String
+  models: String
+  sar: String
+  currentprice: String
+  performance: String
+  display: String
+  batterylife: String
+  network: String
+  images: [ID]
 }
 
 input updateArticlesInput {
@@ -349,6 +762,15 @@ input updateArticlesInput {
 
 type updateArticlesPayload {
   article: Articles
+}
+
+input updatePopularsmartphoneweekInput {
+  where: InputID
+  data: editPopularsmartphoneweekInput
+}
+
+type updatePopularsmartphoneweekPayload {
+  popularsmartphoneweek: Popularsmartphoneweek
 }
 
 input updateRoleInput {

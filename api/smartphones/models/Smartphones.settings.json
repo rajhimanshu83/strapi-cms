@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "smartphones",
   "info": {
     "name": "smartphones",
     "description": "smartphones database"
@@ -11,6 +11,120 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "popularsmartphoneweek": {
+      "model": "popularsmartphoneweek",
+      "via": "smartphones"
+    },
+    "speed": {
+      "type": "string"
+    },
+    "announced": {
+      "type": "string"
+    },
+    "availability": {
+      "type": "string"
+    },
+    "dimensions": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "sim": {
+      "type": "string"
+    },
+    "formfactor": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string"
+    },
+    "resolution": {
+      "type": "string"
+    },
+    "os": {
+      "type": "string"
+    },
+    "chipset": {
+      "type": "string"
+    },
+    "cpu": {
+      "type": "string"
+    },
+    "gpu": {
+      "type": "string"
+    },
+    "cardslot": {
+      "type": "string"
+    },
+    "internal": {
+      "type": "string"
+    },
+    "camera": {
+      "type": "text"
+    },
+    "loudspeaker": {
+      "type": "string"
+    },
+    "headjack": {
+      "type": "string"
+    },
+    "launchprice": {
+      "type": "text"
+    },
+    "wlan": {
+      "type": "string"
+    },
+    "bluetooth": {
+      "type": "string"
+    },
+    "nfc": {
+      "type": "string"
+    },
+    "gps": {
+      "type": "string"
+    },
+    "radio": {
+      "type": "string"
+    },
+    "usb": {
+      "type": "string"
+    },
+    "sensors": {
+      "type": "text"
+    },
+    "battery": {
+      "type": "text"
+    },
+    "colors": {
+      "type": "text"
+    },
+    "models": {
+      "type": "string"
+    },
+    "sar": {
+      "type": "string"
+    },
+    "currentprice": {
+      "type": "string"
+    },
+    "performance": {
+      "type": "text"
+    },
+    "display": {
+      "type": "string"
+    },
+    "batterylife": {
+      "type": "string"
+    },
+    "network": {
+      "type": "text"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
     }
   }
 }

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/popularsmartphoneweeks",
+      "handler": "Popularsmartphoneweek.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/popularsmartphoneweeks/count",
+      "handler": "Popularsmartphoneweek.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/popularsmartphoneweeks/:_id",
+      "handler": "Popularsmartphoneweek.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/popularsmartphoneweeks",
+      "handler": "Popularsmartphoneweek.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/popularsmartphoneweeks/:_id",
+      "handler": "Popularsmartphoneweek.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/popularsmartphoneweeks/:_id",
+      "handler": "Popularsmartphoneweek.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
