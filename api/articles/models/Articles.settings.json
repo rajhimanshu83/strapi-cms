@@ -28,6 +28,12 @@
     },
     "tag": {
       "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "highlights": {
+      "type": "text"
     }
   }
 }

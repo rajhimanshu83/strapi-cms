@@ -9,6 +9,8 @@ type Articles {
   image: UploadFile
   category: String
   tag: String
+  author: String
+  highlights: String
 }
 
 type ArticlesAggregator {
@@ -27,6 +29,11 @@ type ArticlesConnection_id {
   connection: ArticlesConnection
 }
 
+type ArticlesConnectionAuthor {
+  key: String
+  connection: ArticlesConnection
+}
+
 type ArticlesConnectionCategory {
   key: String
   connection: ArticlesConnection
@@ -39,6 +46,11 @@ type ArticlesConnectionContent {
 
 type ArticlesConnectionCreatedAt {
   key: DateTime
+  connection: ArticlesConnection
+}
+
+type ArticlesConnectionHighlights {
+  key: String
   connection: ArticlesConnection
 }
 
@@ -77,6 +89,8 @@ type ArticlesGroupBy {
   image: [ArticlesConnectionImage]
   category: [ArticlesConnectionCategory]
   tag: [ArticlesConnectionTag]
+  author: [ArticlesConnectionAuthor]
+  highlights: [ArticlesConnectionHighlights]
 }
 
 input ArticlesInput {
@@ -85,6 +99,8 @@ input ArticlesInput {
   image: ID
   category: String
   tag: String
+  author: String
+  highlights: String
 }
 
 input createArticlesInput {
@@ -178,6 +194,8 @@ input editArticlesInput {
   image: ID
   category: String
   tag: String
+  author: String
+  highlights: String
 }
 
 input editFileInput {
@@ -283,7 +301,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionCategory | ArticlesConnectionTag | Popularsmartphoneweek | createPopularsmartphoneweekPayload | updatePopularsmartphoneweekPayload | deletePopularsmartphoneweekPayload | PopularsmartphoneweekConnection | PopularsmartphoneweekAggregator | PopularsmartphoneweekGroupBy | PopularsmartphoneweekConnection_id | PopularsmartphoneweekConnectionId | PopularsmartphoneweekConnectionCreatedAt | PopularsmartphoneweekConnectionUpdatedAt | PopularsmartphoneweekConnectionWeek | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | SmartphonesConnectionPopularsmartphoneweek | SmartphonesConnectionSpeed | SmartphonesConnectionAnnounced | SmartphonesConnectionAvailability | SmartphonesConnectionDimensions | SmartphonesConnectionWeight | SmartphonesConnectionSim | SmartphonesConnectionFormfactor | SmartphonesConnectionSize | SmartphonesConnectionResolution | SmartphonesConnectionOs | SmartphonesConnectionChipset | SmartphonesConnectionCpu | SmartphonesConnectionGpu | SmartphonesConnectionCardslot | SmartphonesConnectionInternal | SmartphonesConnectionCamera | SmartphonesConnectionLoudspeaker | SmartphonesConnectionHeadjack | SmartphonesConnectionLaunchprice | SmartphonesConnectionWlan | SmartphonesConnectionBluetooth | SmartphonesConnectionNfc | SmartphonesConnectionGps | SmartphonesConnectionRadio | SmartphonesConnectionUsb | SmartphonesConnectionSensors | SmartphonesConnectionBattery | SmartphonesConnectionColors | SmartphonesConnectionModels | SmartphonesConnectionSar | SmartphonesConnectionCurrentprice | SmartphonesConnectionPerformance | SmartphonesConnectionDisplay | SmartphonesConnectionBatterylife | SmartphonesConnectionNetwork | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionCategory | ArticlesConnectionTag | ArticlesConnectionAuthor | ArticlesConnectionHighlights | Popularsmartphoneweek | createPopularsmartphoneweekPayload | updatePopularsmartphoneweekPayload | deletePopularsmartphoneweekPayload | PopularsmartphoneweekConnection | PopularsmartphoneweekAggregator | PopularsmartphoneweekGroupBy | PopularsmartphoneweekConnection_id | PopularsmartphoneweekConnectionId | PopularsmartphoneweekConnectionCreatedAt | PopularsmartphoneweekConnectionUpdatedAt | PopularsmartphoneweekConnectionWeek | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | SmartphonesConnectionPopularsmartphoneweek | SmartphonesConnectionSpeed | SmartphonesConnectionAnnounced | SmartphonesConnectionAvailability | SmartphonesConnectionDimensions | SmartphonesConnectionWeight | SmartphonesConnectionSim | SmartphonesConnectionFormfactor | SmartphonesConnectionSize | SmartphonesConnectionResolution | SmartphonesConnectionOs | SmartphonesConnectionChipset | SmartphonesConnectionCpu | SmartphonesConnectionGpu | SmartphonesConnectionCardslot | SmartphonesConnectionInternal | SmartphonesConnectionCamera | SmartphonesConnectionLoudspeaker | SmartphonesConnectionHeadjack | SmartphonesConnectionLaunchprice | SmartphonesConnectionWlan | SmartphonesConnectionBluetooth | SmartphonesConnectionNfc | SmartphonesConnectionGps | SmartphonesConnectionRadio | SmartphonesConnectionUsb | SmartphonesConnectionSensors | SmartphonesConnectionBattery | SmartphonesConnectionColors | SmartphonesConnectionModels | SmartphonesConnectionSar | SmartphonesConnectionCurrentprice | SmartphonesConnectionPerformance | SmartphonesConnectionDisplay | SmartphonesConnectionBatterylife | SmartphonesConnectionNetwork | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createArticles(input: createArticlesInput): createArticlesPayload
