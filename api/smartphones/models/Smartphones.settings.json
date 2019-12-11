@@ -125,6 +125,14 @@
       "collection": "file",
       "via": "related",
       "plugin": "upload"
+    },
+    "secondary_camera": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
     }
   }
 }
