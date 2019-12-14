@@ -133,6 +133,21 @@
       "model": "file",
       "via": "related",
       "plugin": "upload"
+    },
+    "_2gband": {
+      "type": "string"
+    },
+    "_3gband": {
+      "type": "string"
+    },
+    "_4gband": {
+      "type": "string"
+    },
+    "_5gband": {
+      "type": "string"
+    },
+    "build": {
+      "type": "string"
     }
   }
 }
