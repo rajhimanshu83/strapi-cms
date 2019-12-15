@@ -148,6 +148,9 @@
     },
     "build": {
       "type": "string"
+    },
+    "brand": {
+      "type": "string"
     }
   }
 }

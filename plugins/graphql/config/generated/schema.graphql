@@ -270,6 +270,7 @@ input editSmartphonesInput {
   _4gband: String
   _5gband: String
   build: String
+  brand: String
 }
 
 input editUserInput {
@@ -308,7 +309,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionCategory | ArticlesConnectionTag | ArticlesConnectionAuthor | ArticlesConnectionHighlights | Popularsmartphoneweek | createPopularsmartphoneweekPayload | updatePopularsmartphoneweekPayload | deletePopularsmartphoneweekPayload | PopularsmartphoneweekConnection | PopularsmartphoneweekAggregator | PopularsmartphoneweekGroupBy | PopularsmartphoneweekConnection_id | PopularsmartphoneweekConnectionId | PopularsmartphoneweekConnectionCreatedAt | PopularsmartphoneweekConnectionUpdatedAt | PopularsmartphoneweekConnectionWeek | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | SmartphonesConnectionPopularsmartphoneweek | SmartphonesConnectionSpeed | SmartphonesConnectionAnnounced | SmartphonesConnectionAvailability | SmartphonesConnectionDimensions | SmartphonesConnectionWeight | SmartphonesConnectionSim | SmartphonesConnectionFormfactor | SmartphonesConnectionSize | SmartphonesConnectionResolution | SmartphonesConnectionOs | SmartphonesConnectionChipset | SmartphonesConnectionCpu | SmartphonesConnectionGpu | SmartphonesConnectionCardslot | SmartphonesConnectionInternal | SmartphonesConnectionCamera | SmartphonesConnectionLoudspeaker | SmartphonesConnectionHeadjack | SmartphonesConnectionLaunchprice | SmartphonesConnectionWlan | SmartphonesConnectionBluetooth | SmartphonesConnectionNfc | SmartphonesConnectionGps | SmartphonesConnectionRadio | SmartphonesConnectionUsb | SmartphonesConnectionSensors | SmartphonesConnectionBattery | SmartphonesConnectionColors | SmartphonesConnectionModels | SmartphonesConnectionSar | SmartphonesConnectionCurrentprice | SmartphonesConnectionPerformance | SmartphonesConnectionDisplay | SmartphonesConnectionBatterylife | SmartphonesConnectionNetwork | SmartphonesConnectionSecondary_camera | SmartphonesConnectionThumbnail | SmartphonesConnection_2gband | SmartphonesConnection_3gband | SmartphonesConnection_4gband | SmartphonesConnection_5gband | SmartphonesConnectionBuild | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionCategory | ArticlesConnectionTag | ArticlesConnectionAuthor | ArticlesConnectionHighlights | Popularsmartphoneweek | createPopularsmartphoneweekPayload | updatePopularsmartphoneweekPayload | deletePopularsmartphoneweekPayload | PopularsmartphoneweekConnection | PopularsmartphoneweekAggregator | PopularsmartphoneweekGroupBy | PopularsmartphoneweekConnection_id | PopularsmartphoneweekConnectionId | PopularsmartphoneweekConnectionCreatedAt | PopularsmartphoneweekConnectionUpdatedAt | PopularsmartphoneweekConnectionWeek | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | SmartphonesConnectionPopularsmartphoneweek | SmartphonesConnectionSpeed | SmartphonesConnectionAnnounced | SmartphonesConnectionAvailability | SmartphonesConnectionDimensions | SmartphonesConnectionWeight | SmartphonesConnectionSim | SmartphonesConnectionFormfactor | SmartphonesConnectionSize | SmartphonesConnectionResolution | SmartphonesConnectionOs | SmartphonesConnectionChipset | SmartphonesConnectionCpu | SmartphonesConnectionGpu | SmartphonesConnectionCardslot | SmartphonesConnectionInternal | SmartphonesConnectionCamera | SmartphonesConnectionLoudspeaker | SmartphonesConnectionHeadjack | SmartphonesConnectionLaunchprice | SmartphonesConnectionWlan | SmartphonesConnectionBluetooth | SmartphonesConnectionNfc | SmartphonesConnectionGps | SmartphonesConnectionRadio | SmartphonesConnectionUsb | SmartphonesConnectionSensors | SmartphonesConnectionBattery | SmartphonesConnectionColors | SmartphonesConnectionModels | SmartphonesConnectionSar | SmartphonesConnectionCurrentprice | SmartphonesConnectionPerformance | SmartphonesConnectionDisplay | SmartphonesConnectionBatterylife | SmartphonesConnectionNetwork | SmartphonesConnectionSecondary_camera | SmartphonesConnectionThumbnail | SmartphonesConnection_2gband | SmartphonesConnection_3gband | SmartphonesConnection_4gband | SmartphonesConnection_5gband | SmartphonesConnectionBuild | SmartphonesConnectionBrand | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createArticles(input: createArticlesInput): createArticlesPayload
@@ -483,6 +484,7 @@ type Smartphones {
   _4gband: String
   _5gband: String
   build: String
+  brand: String
   images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -543,6 +545,11 @@ type SmartphonesConnectionBatterylife {
 }
 
 type SmartphonesConnectionBluetooth {
+  key: String
+  connection: SmartphonesConnection
+}
+
+type SmartphonesConnectionBrand {
   key: String
   connection: SmartphonesConnection
 }
@@ -786,6 +793,7 @@ type SmartphonesGroupBy {
   _4gband: [SmartphonesConnection_4gband]
   _5gband: [SmartphonesConnection_5gband]
   build: [SmartphonesConnectionBuild]
+  brand: [SmartphonesConnectionBrand]
 }
 
 input SmartphonesInput {
@@ -834,6 +842,7 @@ input SmartphonesInput {
   _4gband: String
   _5gband: String
   build: String
+  brand: String
 }
 
 input updateArticlesInput {
