@@ -151,6 +151,9 @@
     },
     "brand": {
       "type": "string"
+    },
+    "id": {
+      "type": "integer"
     }
   }
 }
