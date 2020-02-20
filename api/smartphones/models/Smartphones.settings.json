@@ -150,7 +150,8 @@
       "type": "string"
     },
     "brand": {
-      "type": "string"
+      "model": "brands",
+      "via": "smartphones"
     },
     "id": {
       "type": "integer"

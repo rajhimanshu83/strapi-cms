@@ -103,12 +103,142 @@ input ArticlesInput {
   highlights: String
 }
 
+type Brands {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  Name: String!
+  smartphones(sort: String, limit: Int, start: Int, where: JSON): [Smartphones]
+}
+
+type BrandsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BrandsConnection {
+  values: [Brands]
+  groupBy: BrandsGroupBy
+  aggregate: BrandsAggregator
+}
+
+type BrandsConnection_id {
+  key: ID
+  connection: BrandsConnection
+}
+
+type BrandsConnectionCreatedAt {
+  key: DateTime
+  connection: BrandsConnection
+}
+
+type BrandsConnectionId {
+  key: ID
+  connection: BrandsConnection
+}
+
+type BrandsConnectionName {
+  key: String
+  connection: BrandsConnection
+}
+
+type BrandsConnectionUpdatedAt {
+  key: DateTime
+  connection: BrandsConnection
+}
+
+type BrandsGroupBy {
+  _id: [BrandsConnection_id]
+  id: [BrandsConnectionId]
+  createdAt: [BrandsConnectionCreatedAt]
+  updatedAt: [BrandsConnectionUpdatedAt]
+  Name: [BrandsConnectionName]
+}
+
+input BrandsInput {
+  Name: String!
+  smartphones: [ID]
+}
+
+type Category {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  Name: String
+}
+
+type CategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CategoryConnection {
+  values: [Category]
+  groupBy: CategoryGroupBy
+  aggregate: CategoryAggregator
+}
+
+type CategoryConnection_id {
+  key: ID
+  connection: CategoryConnection
+}
+
+type CategoryConnectionCreatedAt {
+  key: DateTime
+  connection: CategoryConnection
+}
+
+type CategoryConnectionId {
+  key: ID
+  connection: CategoryConnection
+}
+
+type CategoryConnectionName {
+  key: String
+  connection: CategoryConnection
+}
+
+type CategoryConnectionUpdatedAt {
+  key: DateTime
+  connection: CategoryConnection
+}
+
+type CategoryGroupBy {
+  _id: [CategoryConnection_id]
+  id: [CategoryConnectionId]
+  createdAt: [CategoryConnectionCreatedAt]
+  updatedAt: [CategoryConnectionUpdatedAt]
+  Name: [CategoryConnectionName]
+}
+
+input CategoryInput {
+  Name: String
+}
+
 input createArticlesInput {
   data: ArticlesInput
 }
 
 type createArticlesPayload {
   article: Articles
+}
+
+input createBrandsInput {
+  data: BrandsInput
+}
+
+type createBrandsPayload {
+  brand: Brands
+}
+
+input createCategoryInput {
+  data: CategoryInput
+}
+
+type createCategoryPayload {
+  category: Category
 }
 
 input createPopularsmartphoneweekInput {
@@ -156,6 +286,22 @@ type deleteArticlesPayload {
   article: Articles
 }
 
+input deleteBrandsInput {
+  where: InputID
+}
+
+type deleteBrandsPayload {
+  brand: Brands
+}
+
+input deleteCategoryInput {
+  where: InputID
+}
+
+type deleteCategoryPayload {
+  category: Category
+}
+
 input deletePopularsmartphoneweekInput {
   where: InputID
 }
@@ -196,6 +342,15 @@ input editArticlesInput {
   tag: String
   author: String
   highlights: String
+}
+
+input editBrandsInput {
+  Name: String
+  smartphones: [ID]
+}
+
+input editCategoryInput {
+  Name: String
 }
 
 input editFileInput {
@@ -270,7 +425,7 @@ input editSmartphonesInput {
   _4gband: String
   _5gband: String
   build: String
-  brand: String
+  brand: ID
   id: Int
 }
 
@@ -310,12 +465,18 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionCategory | ArticlesConnectionTag | ArticlesConnectionAuthor | ArticlesConnectionHighlights | Popularsmartphoneweek | createPopularsmartphoneweekPayload | updatePopularsmartphoneweekPayload | deletePopularsmartphoneweekPayload | PopularsmartphoneweekConnection | PopularsmartphoneweekAggregator | PopularsmartphoneweekGroupBy | PopularsmartphoneweekConnection_id | PopularsmartphoneweekConnectionId | PopularsmartphoneweekConnectionCreatedAt | PopularsmartphoneweekConnectionUpdatedAt | PopularsmartphoneweekConnectionWeek | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesAggregatorSum | SmartphonesAggregatorAvg | SmartphonesAggregatorMin | SmartphonesAggregatorMax | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | SmartphonesConnectionPopularsmartphoneweek | SmartphonesConnectionSpeed | SmartphonesConnectionAnnounced | SmartphonesConnectionAvailability | SmartphonesConnectionDimensions | SmartphonesConnectionWeight | SmartphonesConnectionSim | SmartphonesConnectionFormfactor | SmartphonesConnectionSize | SmartphonesConnectionResolution | SmartphonesConnectionOs | SmartphonesConnectionChipset | SmartphonesConnectionCpu | SmartphonesConnectionGpu | SmartphonesConnectionCardslot | SmartphonesConnectionInternal | SmartphonesConnectionCamera | SmartphonesConnectionLoudspeaker | SmartphonesConnectionHeadjack | SmartphonesConnectionLaunchprice | SmartphonesConnectionWlan | SmartphonesConnectionBluetooth | SmartphonesConnectionNfc | SmartphonesConnectionGps | SmartphonesConnectionRadio | SmartphonesConnectionUsb | SmartphonesConnectionSensors | SmartphonesConnectionBattery | SmartphonesConnectionColors | SmartphonesConnectionModels | SmartphonesConnectionSar | SmartphonesConnectionCurrentprice | SmartphonesConnectionPerformance | SmartphonesConnectionDisplay | SmartphonesConnectionBatterylife | SmartphonesConnectionNetwork | SmartphonesConnectionSecondary_camera | SmartphonesConnectionThumbnail | SmartphonesConnection_2gband | SmartphonesConnection_3gband | SmartphonesConnection_4gband | SmartphonesConnection_5gband | SmartphonesConnectionBuild | SmartphonesConnectionBrand | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Articles | createArticlesPayload | updateArticlesPayload | deleteArticlesPayload | ArticlesConnection | ArticlesAggregator | ArticlesGroupBy | ArticlesConnection_id | ArticlesConnectionId | ArticlesConnectionCreatedAt | ArticlesConnectionUpdatedAt | ArticlesConnectionTitle | ArticlesConnectionContent | ArticlesConnectionImage | ArticlesConnectionCategory | ArticlesConnectionTag | ArticlesConnectionAuthor | ArticlesConnectionHighlights | Brands | createBrandsPayload | updateBrandsPayload | deleteBrandsPayload | BrandsConnection | BrandsAggregator | BrandsGroupBy | BrandsConnection_id | BrandsConnectionId | BrandsConnectionCreatedAt | BrandsConnectionUpdatedAt | BrandsConnectionName | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnection_id | CategoryConnectionId | CategoryConnectionCreatedAt | CategoryConnectionUpdatedAt | CategoryConnectionName | Popularsmartphoneweek | createPopularsmartphoneweekPayload | updatePopularsmartphoneweekPayload | deletePopularsmartphoneweekPayload | PopularsmartphoneweekConnection | PopularsmartphoneweekAggregator | PopularsmartphoneweekGroupBy | PopularsmartphoneweekConnection_id | PopularsmartphoneweekConnectionId | PopularsmartphoneweekConnectionCreatedAt | PopularsmartphoneweekConnectionUpdatedAt | PopularsmartphoneweekConnectionWeek | Smartphones | createSmartphonesPayload | updateSmartphonesPayload | deleteSmartphonesPayload | SmartphonesConnection | SmartphonesAggregator | SmartphonesAggregatorSum | SmartphonesAggregatorAvg | SmartphonesAggregatorMin | SmartphonesAggregatorMax | SmartphonesGroupBy | SmartphonesConnection_id | SmartphonesConnectionId | SmartphonesConnectionCreatedAt | SmartphonesConnectionUpdatedAt | SmartphonesConnectionName | SmartphonesConnectionPopularsmartphoneweek | SmartphonesConnectionSpeed | SmartphonesConnectionAnnounced | SmartphonesConnectionAvailability | SmartphonesConnectionDimensions | SmartphonesConnectionWeight | SmartphonesConnectionSim | SmartphonesConnectionFormfactor | SmartphonesConnectionSize | SmartphonesConnectionResolution | SmartphonesConnectionOs | SmartphonesConnectionChipset | SmartphonesConnectionCpu | SmartphonesConnectionGpu | SmartphonesConnectionCardslot | SmartphonesConnectionInternal | SmartphonesConnectionCamera | SmartphonesConnectionLoudspeaker | SmartphonesConnectionHeadjack | SmartphonesConnectionLaunchprice | SmartphonesConnectionWlan | SmartphonesConnectionBluetooth | SmartphonesConnectionNfc | SmartphonesConnectionGps | SmartphonesConnectionRadio | SmartphonesConnectionUsb | SmartphonesConnectionSensors | SmartphonesConnectionBattery | SmartphonesConnectionColors | SmartphonesConnectionModels | SmartphonesConnectionSar | SmartphonesConnectionCurrentprice | SmartphonesConnectionPerformance | SmartphonesConnectionDisplay | SmartphonesConnectionBatterylife | SmartphonesConnectionNetwork | SmartphonesConnectionSecondary_camera | SmartphonesConnectionThumbnail | SmartphonesConnection_2gband | SmartphonesConnection_3gband | SmartphonesConnection_4gband | SmartphonesConnection_5gband | SmartphonesConnectionBuild | SmartphonesConnectionBrand | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createArticles(input: createArticlesInput): createArticlesPayload
   updateArticles(input: updateArticlesInput): updateArticlesPayload
   deleteArticles(input: deleteArticlesInput): deleteArticlesPayload
+  createBrands(input: createBrandsInput): createBrandsPayload
+  updateBrands(input: updateBrandsInput): updateBrandsPayload
+  deleteBrands(input: deleteBrandsInput): deleteBrandsPayload
+  createCategory(input: createCategoryInput): createCategoryPayload
+  updateCategory(input: updateCategoryInput): updateCategoryPayload
+  deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
   createPopularsmartphoneweek(input: createPopularsmartphoneweekInput): createPopularsmartphoneweekPayload
   updatePopularsmartphoneweek(input: updatePopularsmartphoneweekInput): updatePopularsmartphoneweekPayload
   deletePopularsmartphoneweek(input: deletePopularsmartphoneweekInput): deletePopularsmartphoneweekPayload
@@ -406,6 +567,12 @@ type Query {
   article(id: ID!): Articles
   articles(sort: String, limit: Int, start: Int, where: JSON): [Articles]
   articlesConnection(sort: String, limit: Int, start: Int, where: JSON): ArticlesConnection
+  brand(id: ID!): Brands
+  brands(sort: String, limit: Int, start: Int, where: JSON): [Brands]
+  brandsConnection(sort: String, limit: Int, start: Int, where: JSON): BrandsConnection
+  category(id: ID!): Category
+  categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
+  categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CategoryConnection
   popularsmartphoneweek(id: ID!): Popularsmartphoneweek
   popularsmartphoneweeks(sort: String, limit: Int, start: Int, where: JSON): [Popularsmartphoneweek]
   popularsmartphoneweeksConnection(sort: String, limit: Int, start: Int, where: JSON): PopularsmartphoneweekConnection
@@ -485,7 +652,7 @@ type Smartphones {
   _4gband: String
   _5gband: String
   build: String
-  brand: String
+  brand: Brands
   images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
 }
 
@@ -571,7 +738,7 @@ type SmartphonesConnectionBluetooth {
 }
 
 type SmartphonesConnectionBrand {
-  key: String
+  key: ID
   connection: SmartphonesConnection
 }
 
@@ -863,7 +1030,7 @@ input SmartphonesInput {
   _4gband: String
   _5gband: String
   build: String
-  brand: String
+  brand: ID
   id: Int
 }
 
@@ -874,6 +1041,24 @@ input updateArticlesInput {
 
 type updateArticlesPayload {
   article: Articles
+}
+
+input updateBrandsInput {
+  where: InputID
+  data: editBrandsInput
+}
+
+type updateBrandsPayload {
+  brand: Brands
+}
+
+input updateCategoryInput {
+  where: InputID
+  data: editCategoryInput
+}
+
+type updateCategoryPayload {
+  category: Category
 }
 
 input updatePopularsmartphoneweekInput {

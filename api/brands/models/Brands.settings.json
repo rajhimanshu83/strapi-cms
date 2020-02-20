@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "brands",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "required": true,
+      "unique": true,
+      "type": "string"
+    },
+    "smartphones": {
+      "collection": "smartphones",
+      "via": "brand"
+    }
+  }
+}

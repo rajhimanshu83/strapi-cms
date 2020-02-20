@@ -24,7 +24,8 @@
       "plugin": "upload"
     },
     "category": {
-      "type": "string"
+      "model": "category",
+      "via": "articles"
     },
     "tag": {
       "type": "string"
